@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_SAE_FROTASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LancamentoDiario">
+          <Key>
+            <PropertyRef Name="idTipoAtividade" />
+            <PropertyRef Name="placa" />
+            <PropertyRef Name="data" />
+          </Key>
+          <Property Name="idTipoAtividade" Type="int" Nullable="false" />
+          <Property Name="placa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="motorista" Type="varchar" MaxLength="40" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="horarioChegada" Type="time" Precision="7" />
+          <Property Name="horarioSaida" Type="time" Precision="7" />
+          <Property Name="kmRodados" Type="float" />
+          <Property Name="nomeAtividade" Type="varchar" MaxLength="40" />
+          <Property Name="isResponsabilidadeSae" Type="bit" />
+          <Property Name="descontoDiarias" Type="float" />
+          <Property Name="valorManutencao" Type="float" Nullable="false" />
+          <Property Name="litrosOleoUsado" Type="float" />
+          <Property Name="valorLitro" Type="float" />
+          <Property Name="valorTotalLitro" Type="float" />
+          <Property Name="valorDiaria" Type="float" />
+        </EntityType>
+        <EntityType Name="Motorista">
+          <Key>
+            <PropertyRef Name="cpf" />
+          </Key>
+          <Property Name="cpf" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="carteiraPossuida" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="validadeCarteira" Type="date" />
+        </EntityType>
+        <EntityType Name="TipoVeiculo">
+          <Key>
+            <PropertyRef Name="nomeTipo" />
+          </Key>
+          <Property Name="nomeTipo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="numRodas" Type="int" />
+          <Property Name="capacidadePassageiros" Type="int" />
+          <Property Name="carteiraNecessaria" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="placa" />
+          </Key>
+          <Property Name="placa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="40" />
+          <Property Name="modelo" Type="varchar" MaxLength="40" />
+          <Property Name="ano" Type="int" />
+          <Property Name="familia" Type="varchar" MaxLength="30" />
+          <Property Name="isProprietarioSae" Type="bit" />
+          <Property Name="inicioVigencia" Type="date" />
+          <Property Name="fimVigencia" Type="date" />
+          <Property Name="numContrato" Type="int" />
+          <Property Name="numOrdemCompra" Type="int" />
+          <Property Name="valorLocacao" Type="float" />
+          <Property Name="valorOrdemCompra" Type="float" />
+          <Property Name="saldoOrdemCompra" Type="float" />
+          <Property Name="saldoOcProxMes" Type="float" />
+          <Property Name="proprietario" Type="varchar" MaxLength="40" />
+          <Property Name="observacao" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <Association Name="FK__Lancament__placa__71D1E811">
+          <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="1" />
+          <End Role="LancamentoDiario" Type="Self.LancamentoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="placa" />
+            </Principal>
+            <Dependent Role="LancamentoDiario">
+              <PropertyRef Name="placa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_SAE_FROTASModelStoreContainer">
+          <EntitySet Name="LancamentoDiario" EntityType="Self.LancamentoDiario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Motorista" EntityType="Self.Motorista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoVeiculo" EntityType="Self.TipoVeiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veiculo" EntityType="Self.Veiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Lancament__placa__71D1E811" Association="Self.FK__Lancament__placa__71D1E811">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="LancamentoDiario" EntitySet="LancamentoDiario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_SAE_FROTASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ConnectionString" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LancamentoDiario" EntityType="DB_SAE_FROTASModel.LancamentoDiario" />
+          <EntitySet Name="Veiculo" EntityType="DB_SAE_FROTASModel.Veiculo" />
+          <AssociationSet Name="FK__Lancament__placa__71D1E811" Association="DB_SAE_FROTASModel.FK__Lancament__placa__71D1E811">
+            <End Role="Veiculo" EntitySet="Veiculo" />
+            <End Role="LancamentoDiario" EntitySet="LancamentoDiario" />
+          </AssociationSet>
+          <EntitySet Name="Motorista" EntityType="DB_SAE_FROTASModel.Motorista" />
+          <EntitySet Name="TipoVeiculo" EntityType="DB_SAE_FROTASModel.TipoVeiculo" />
+        </EntityContainer>
+        <EntityType Name="LancamentoDiario">
+          <Key>
+            <PropertyRef Name="idTipoAtividade" />
+            <PropertyRef Name="placa" />
+            <PropertyRef Name="data" />
+          </Key>
+          <Property Name="idTipoAtividade" Type="Int32" Nullable="false" />
+          <Property Name="placa" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="motorista" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="horarioChegada" Type="Time" Precision="7" />
+          <Property Name="horarioSaida" Type="Time" Precision="7" />
+          <Property Name="kmRodados" Type="Double" />
+          <Property Name="nomeAtividade" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="isResponsabilidadeSae" Type="Boolean" />
+          <Property Name="descontoDiarias" Type="Double" />
+          <Property Name="valorManutencao" Type="Double" Nullable="false" />
+          <Property Name="litrosOleoUsado" Type="Double" />
+          <Property Name="valorLitro" Type="Double" />
+          <Property Name="valorTotalLitro" Type="Double" />
+          <Property Name="valorDiaria" Type="Double" />
+          <NavigationProperty Name="Veiculo" Relationship="DB_SAE_FROTASModel.FK__Lancament__placa__71D1E811" FromRole="LancamentoDiario" ToRole="Veiculo" />
+        </EntityType>
+        <EntityType Name="Veiculo">
+          <Key>
+            <PropertyRef Name="placa" />
+          </Key>
+          <Property Name="placa" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="marca" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="modelo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ano" Type="Int32" />
+          <Property Name="familia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="isProprietarioSae" Type="Boolean" />
+          <Property Name="inicioVigencia" Type="DateTime" Precision="0" />
+          <Property Name="fimVigencia" Type="DateTime" Precision="0" />
+          <Property Name="numContrato" Type="Int32" />
+          <Property Name="numOrdemCompra" Type="Int32" />
+          <Property Name="valorLocacao" Type="Double" />
+          <Property Name="valorOrdemCompra" Type="Double" />
+          <Property Name="saldoOrdemCompra" Type="Double" />
+          <Property Name="saldoOcProxMes" Type="Double" />
+          <Property Name="proprietario" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="observacao" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LancamentoDiario" Relationship="DB_SAE_FROTASModel.FK__Lancament__placa__71D1E811" FromRole="Veiculo" ToRole="LancamentoDiario" />
+        </EntityType>
+        <Association Name="FK__Lancament__placa__71D1E811">
+          <End Type="DB_SAE_FROTASModel.Veiculo" Role="Veiculo" Multiplicity="1" />
+          <End Type="DB_SAE_FROTASModel.LancamentoDiario" Role="LancamentoDiario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veiculo">
+              <PropertyRef Name="placa" />
+            </Principal>
+            <Dependent Role="LancamentoDiario">
+              <PropertyRef Name="placa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Motorista">
+          <Key>
+            <PropertyRef Name="cpf" />
+          </Key>
+          <Property Name="cpf" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="carteiraPossuida" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="validadeCarteira" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TipoVeiculo">
+          <Key>
+            <PropertyRef Name="nomeTipo" />
+          </Key>
+          <Property Name="nomeTipo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="numRodas" Type="Int32" />
+          <Property Name="capacidadePassageiros" Type="Int32" />
+          <Property Name="carteiraNecessaria" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_SAE_FROTASModelStoreContainer" CdmEntityContainer="ConnectionString">
+          <EntitySetMapping Name="LancamentoDiario">
+            <EntityTypeMapping TypeName="DB_SAE_FROTASModel.LancamentoDiario">
+              <MappingFragment StoreEntitySet="LancamentoDiario">
+                <ScalarProperty Name="valorDiaria" ColumnName="valorDiaria" />
+                <ScalarProperty Name="valorTotalLitro" ColumnName="valorTotalLitro" />
+                <ScalarProperty Name="valorLitro" ColumnName="valorLitro" />
+                <ScalarProperty Name="litrosOleoUsado" ColumnName="litrosOleoUsado" />
+                <ScalarProperty Name="valorManutencao" ColumnName="valorManutencao" />
+                <ScalarProperty Name="descontoDiarias" ColumnName="descontoDiarias" />
+                <ScalarProperty Name="isResponsabilidadeSae" ColumnName="isResponsabilidadeSae" />
+                <ScalarProperty Name="nomeAtividade" ColumnName="nomeAtividade" />
+                <ScalarProperty Name="kmRodados" ColumnName="kmRodados" />
+                <ScalarProperty Name="horarioSaida" ColumnName="horarioSaida" />
+                <ScalarProperty Name="horarioChegada" ColumnName="horarioChegada" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="motorista" ColumnName="motorista" />
+                <ScalarProperty Name="placa" ColumnName="placa" />
+                <ScalarProperty Name="idTipoAtividade" ColumnName="idTipoAtividade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veiculo">
+            <EntityTypeMapping TypeName="DB_SAE_FROTASModel.Veiculo">
+              <MappingFragment StoreEntitySet="Veiculo">
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+                <ScalarProperty Name="proprietario" ColumnName="proprietario" />
+                <ScalarProperty Name="saldoOcProxMes" ColumnName="saldoOcProxMes" />
+                <ScalarProperty Name="saldoOrdemCompra" ColumnName="saldoOrdemCompra" />
+                <ScalarProperty Name="valorOrdemCompra" ColumnName="valorOrdemCompra" />
+                <ScalarProperty Name="valorLocacao" ColumnName="valorLocacao" />
+                <ScalarProperty Name="numOrdemCompra" ColumnName="numOrdemCompra" />
+                <ScalarProperty Name="numContrato" ColumnName="numContrato" />
+                <ScalarProperty Name="fimVigencia" ColumnName="fimVigencia" />
+                <ScalarProperty Name="inicioVigencia" ColumnName="inicioVigencia" />
+                <ScalarProperty Name="isProprietarioSae" ColumnName="isProprietarioSae" />
+                <ScalarProperty Name="familia" ColumnName="familia" />
+                <ScalarProperty Name="ano" ColumnName="ano" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="placa" ColumnName="placa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Motorista">
+            <EntityTypeMapping TypeName="DB_SAE_FROTASModel.Motorista">
+              <MappingFragment StoreEntitySet="Motorista">
+                <ScalarProperty Name="validadeCarteira" ColumnName="validadeCarteira" />
+                <ScalarProperty Name="carteiraPossuida" ColumnName="carteiraPossuida" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoVeiculo">
+            <EntityTypeMapping TypeName="DB_SAE_FROTASModel.TipoVeiculo">
+              <MappingFragment StoreEntitySet="TipoVeiculo">
+                <ScalarProperty Name="carteiraNecessaria" ColumnName="carteiraNecessaria" />
+                <ScalarProperty Name="capacidadePassageiros" ColumnName="capacidadePassageiros" />
+                <ScalarProperty Name="numRodas" ColumnName="numRodas" />
+                <ScalarProperty Name="nomeTipo" ColumnName="nomeTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_SAE_FROTASModelStoreContainer" CdmEntityContainer="ConnectionString">
+    <EntitySetMapping Name="LancamentoDiario">
+      <EntityTypeMapping TypeName="DB_SAE_FROTASModel.LancamentoDiario">
+        <MappingFragment StoreEntitySet="LancamentoDiario">
+          <ScalarProperty Name="valorDiaria" ColumnName="valorDiaria" />
+          <ScalarProperty Name="valorTotalLitro" ColumnName="valorTotalLitro" />
+          <ScalarProperty Name="valorLitro" ColumnName="valorLitro" />
+          <ScalarProperty Name="litrosOleoUsado" ColumnName="litrosOleoUsado" />
+          <ScalarProperty Name="valorManutencao" ColumnName="valorManutencao" />
+          <ScalarProperty Name="descontoDiarias" ColumnName="descontoDiarias" />
+          <ScalarProperty Name="isResponsabilidadeSae" ColumnName="isResponsabilidadeSae" />
+          <ScalarProperty Name="nomeAtividade" ColumnName="nomeAtividade" />
+          <ScalarProperty Name="kmRodados" ColumnName="kmRodados" />
+          <ScalarProperty Name="horarioSaida" ColumnName="horarioSaida" />
+          <ScalarProperty Name="horarioChegada" ColumnName="horarioChegada" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="motorista" ColumnName="motorista" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+          <ScalarProperty Name="idTipoAtividade" ColumnName="idTipoAtividade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Veiculo">
+      <EntityTypeMapping TypeName="DB_SAE_FROTASModel.Veiculo">
+        <MappingFragment StoreEntitySet="Veiculo">
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+          <ScalarProperty Name="proprietario" ColumnName="proprietario" />
+          <ScalarProperty Name="saldoOcProxMes" ColumnName="saldoOcProxMes" />
+          <ScalarProperty Name="saldoOrdemCompra" ColumnName="saldoOrdemCompra" />
+          <ScalarProperty Name="valorOrdemCompra" ColumnName="valorOrdemCompra" />
+          <ScalarProperty Name="valorLocacao" ColumnName="valorLocacao" />
+          <ScalarProperty Name="numOrdemCompra" ColumnName="numOrdemCompra" />
+          <ScalarProperty Name="numContrato" ColumnName="numContrato" />
+          <ScalarProperty Name="fimVigencia" ColumnName="fimVigencia" />
+          <ScalarProperty Name="inicioVigencia" ColumnName="inicioVigencia" />
+          <ScalarProperty Name="isProprietarioSae" ColumnName="isProprietarioSae" />
+          <ScalarProperty Name="familia" ColumnName="familia" />
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Motorista">
+      <EntityTypeMapping TypeName="DB_SAE_FROTASModel.Motorista">
+        <MappingFragment StoreEntitySet="Motorista">
+          <ScalarProperty Name="validadeCarteira" ColumnName="validadeCarteira" />
+          <ScalarProperty Name="carteiraPossuida" ColumnName="carteiraPossuida" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoVeiculo">
+      <EntityTypeMapping TypeName="DB_SAE_FROTASModel.TipoVeiculo">
+        <MappingFragment StoreEntitySet="TipoVeiculo">
+          <ScalarProperty Name="carteiraNecessaria" ColumnName="carteiraNecessaria" />
+          <ScalarProperty Name="capacidadePassageiros" ColumnName="capacidadePassageiros" />
+          <ScalarProperty Name="numRodas" ColumnName="numRodas" />
+          <ScalarProperty Name="nomeTipo" ColumnName="nomeTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

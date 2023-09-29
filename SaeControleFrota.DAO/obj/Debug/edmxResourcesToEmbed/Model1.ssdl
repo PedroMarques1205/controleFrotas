@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_SAE_FROTASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LancamentoDiario">
+    <Key>
+      <PropertyRef Name="idTipoAtividade" />
+      <PropertyRef Name="placa" />
+      <PropertyRef Name="data" />
+    </Key>
+    <Property Name="idTipoAtividade" Type="int" Nullable="false" />
+    <Property Name="placa" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="motorista" Type="varchar" MaxLength="40" />
+    <Property Name="data" Type="date" Nullable="false" />
+    <Property Name="horarioChegada" Type="time" Precision="7" />
+    <Property Name="horarioSaida" Type="time" Precision="7" />
+    <Property Name="kmRodados" Type="float" />
+    <Property Name="nomeAtividade" Type="varchar" MaxLength="40" />
+    <Property Name="isResponsabilidadeSae" Type="bit" />
+    <Property Name="descontoDiarias" Type="float" />
+    <Property Name="valorManutencao" Type="float" Nullable="false" />
+    <Property Name="litrosOleoUsado" Type="float" />
+    <Property Name="valorLitro" Type="float" />
+    <Property Name="valorTotalLitro" Type="float" />
+    <Property Name="valorDiaria" Type="float" />
+  </EntityType>
+  <EntityType Name="Motorista">
+    <Key>
+      <PropertyRef Name="cpf" />
+    </Key>
+    <Property Name="cpf" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="carteiraPossuida" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="validadeCarteira" Type="date" />
+  </EntityType>
+  <EntityType Name="TipoVeiculo">
+    <Key>
+      <PropertyRef Name="nomeTipo" />
+    </Key>
+    <Property Name="nomeTipo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="numRodas" Type="int" />
+    <Property Name="capacidadePassageiros" Type="int" />
+    <Property Name="carteiraNecessaria" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Veiculo">
+    <Key>
+      <PropertyRef Name="placa" />
+    </Key>
+    <Property Name="placa" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="marca" Type="varchar" MaxLength="40" />
+    <Property Name="modelo" Type="varchar" MaxLength="40" />
+    <Property Name="ano" Type="int" />
+    <Property Name="familia" Type="varchar" MaxLength="30" />
+    <Property Name="isProprietarioSae" Type="bit" />
+    <Property Name="inicioVigencia" Type="date" />
+    <Property Name="fimVigencia" Type="date" />
+    <Property Name="numContrato" Type="int" />
+    <Property Name="numOrdemCompra" Type="int" />
+    <Property Name="valorLocacao" Type="float" />
+    <Property Name="valorOrdemCompra" Type="float" />
+    <Property Name="saldoOrdemCompra" Type="float" />
+    <Property Name="saldoOcProxMes" Type="float" />
+    <Property Name="proprietario" Type="varchar" MaxLength="40" />
+    <Property Name="observacao" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <Association Name="FK__Lancament__placa__71D1E811">
+    <End Role="Veiculo" Type="Self.Veiculo" Multiplicity="1" />
+    <End Role="LancamentoDiario" Type="Self.LancamentoDiario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Veiculo">
+        <PropertyRef Name="placa" />
+      </Principal>
+      <Dependent Role="LancamentoDiario">
+        <PropertyRef Name="placa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_SAE_FROTASModelStoreContainer">
+    <EntitySet Name="LancamentoDiario" EntityType="Self.LancamentoDiario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Motorista" EntityType="Self.Motorista" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoVeiculo" EntityType="Self.TipoVeiculo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Veiculo" EntityType="Self.Veiculo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Lancament__placa__71D1E811" Association="Self.FK__Lancament__placa__71D1E811">
+      <End Role="Veiculo" EntitySet="Veiculo" />
+      <End Role="LancamentoDiario" EntitySet="LancamentoDiario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

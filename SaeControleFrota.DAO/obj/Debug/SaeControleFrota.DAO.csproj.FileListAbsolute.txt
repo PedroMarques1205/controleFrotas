@@ -1,0 +1,15 @@
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\bin\Debug\SaeControleFrota.DAO.exe.config
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\bin\Debug\SaeControleFrota.DAO.exe
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\bin\Debug\SaeControleFrota.DAO.pdb
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\bin\Debug\EntityFramework.dll
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\bin\Debug\EntityFramework.xml
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\bin\Debug\EntityFramework.SqlServer.xml
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.csproj.AssemblyReference.cache
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.csproj.SuggestedBindingRedirects.cache
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.Properties.Resources.resources
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.csproj.GenerateResource.cache
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.csproj.CoreCompileInputs.cache
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.csproj.CopyComplete
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.exe
+C:\Projetos\SaeControleFrota\SaeControleFrota.DAO\obj\Debug\SaeControleFrota.DAO.pdb
