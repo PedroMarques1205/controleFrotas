@@ -21,6 +21,8 @@ namespace SaeControleFrota
         private void cadastroMotorista_Load(object sender, EventArgs e)
         {
             CarregaGrid();
+            txtResultado.Visible = true;
+            txtResultado.Text = "Registros encontrados: "+MotoristaDataGridView.RowCount;
         }
 
         private void adicionarNovoMotoristaToolStripMenuItem_Click(object sender, EventArgs e)

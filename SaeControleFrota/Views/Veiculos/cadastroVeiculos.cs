@@ -89,8 +89,8 @@ namespace SaeControleFrota
 
                 VeiculoDataGridView.DataSource = query;
 
-                //txtResultado.Visible = true;
-                //txtResultado.Text = "Registros encontrados:"+VeiculoDataGridView.RowCount;
+                txtResultado.Visible = true;
+                txtResultado.Text = "Registros encontrados: "+VeiculoDataGridView.RowCount;
             }
         }
 

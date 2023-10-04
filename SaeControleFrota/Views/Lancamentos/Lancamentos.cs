@@ -30,6 +30,8 @@ namespace SaeControleFrota
         private void Lancamentos_Load(object sender, EventArgs e)
         {
             atualizaLista();
+            txtResultado.Visible = true;
+            txtResultado.Text = "Registros encontrados: "+LancamentoDataGridView.RowCount;
 
         }
 

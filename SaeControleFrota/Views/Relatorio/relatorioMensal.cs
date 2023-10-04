@@ -14,7 +14,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Drawing.Charts;
-
+using SaeControleFrota.Report.Model;
 
 namespace SaeControleFrota
 {
@@ -50,12 +50,17 @@ namespace SaeControleFrota
             mesDropDown.Items.Add("Outubro");
             mesDropDown.Items.Add("Novembro");
             mesDropDown.Items.Add("Dezembro");
+
+
+            this.reportViewer1.RefreshReport();
+            this.reportViewer1.RefreshReport();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             using (ConnectionString context = new ConnectionString())
             {
+                reportViewer1.Visible = true;
                 int mes;
                 int ano = Convert.ToInt32(anoDropDown.Text);
                 if (mesDropDown.Text=="Janeiro")
@@ -113,19 +118,51 @@ namespace SaeControleFrota
                                          where relatorio.data.Month == mes
                                          && veiculo.placa == placaDropdown.Text
                                          && relatorio.data.Year == ano
-                                         select new
-                                         {
+                                         select new{
                                              Placa = veiculo.placa,
                                              modelo = veiculo.modelo,
                                              marca = veiculo.marca,
-                                             Mês = relatorio.data.Month,
+                                             Mes = relatorio.data.Month,
                                              Ano = relatorio.data.Year,
                                              Mororista = relatorio.motorista,
                                              TipoDeAtividade = relatorio.nomeAtividade,
                                              ValorToal = veiculo.valorLocacao + relatorio.valorManutencao
-                                         }).ToList();
+                                         });
 
-                relatorioDataGridView.DataSource = queryForRelatorio;
+                List<DadosRelatorio> list = new List<DadosRelatorio>();
+                List<LancamentoDiario> listaLancamentos = new List<LancamentoDiario>();
+                foreach (var item in queryForRelatorio)
+                {
+                    listaLancamentos = context.LancamentoDiario.Where(x => x.placa.Equals(item.Placa)).ToList();
+                    list.Add(
+                            new DadosRelatorio
+                            {
+                                Placa = item.Placa,
+                                modelo = item.modelo,
+                                marca = item.marca,
+                                Mes = item.Mes,
+                                Ano = item.Ano,
+                                Mororista = item.Mororista,
+                                TipoDeAtividade = item.TipoDeAtividade,
+                                ValorToal = item.ValorToal ?? 0,
+                            }
+                        );
+                }
+
+                List<Veiculo> listaVeiculos = context.Veiculo.Where(x => x.placa == placaDropdown.Text).ToList();
+
+                this.reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
+                this.reportViewer1.ZoomPercent = 150;
+                
+                this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("DataSet1", list));
+                this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dsVeiculo", listaVeiculos));
+                this.reportViewer1.LocalReport.DataSources.Add(new Microsoft.Reporting.WinForms.ReportDataSource("dsAtividadesRealizadas", listaLancamentos));
+                this.reportViewer1.LocalReport.Refresh();
+                this.reportViewer1.RefreshReport();
+
+
+               
             }
         }
 
@@ -253,6 +290,11 @@ namespace SaeControleFrota
                     MessageBox.Show("Erro ao gerar o arquivo", "Error", buttons, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

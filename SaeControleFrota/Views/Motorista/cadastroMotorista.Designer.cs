@@ -39,8 +39,11 @@
             this.excluirMotoristaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarMotoristaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.txtResultado = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.MotoristaDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MotoristaDataGridView
@@ -84,7 +87,7 @@
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             this.MotoristaDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.MotoristaDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MotoristaDataGridView.Size = new System.Drawing.Size(775, 380);
+            this.MotoristaDataGridView.Size = new System.Drawing.Size(775, 369);
             this.MotoristaDataGridView.TabIndex = 3;
             // 
             // menuStrip1
@@ -137,11 +140,29 @@
             this.atualizarListaToolStripMenuItem.Text = "Atualizar lista";
             this.atualizarListaToolStripMenuItem.Click += new System.EventHandler(this.atualizarListaToolStripMenuItem_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.txtResultado});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 24);
+            this.statusStrip1.TabIndex = 70;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // txtResultado
+            // 
+            this.txtResultado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtResultado.Name = "txtResultado";
+            this.txtResultado.Size = new System.Drawing.Size(139, 19);
+            this.txtResultado.Text = "toolStripStatusLabel1";
+            // 
             // cadastroMotorista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MotoristaDataGridView);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -151,6 +172,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MotoristaDataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem excluirMotoristaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarMotoristaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem atualizarListaToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel txtResultado;
     }
 }

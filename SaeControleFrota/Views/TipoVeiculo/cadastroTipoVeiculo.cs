@@ -21,6 +21,8 @@ namespace SaeControleFrota
         private void cadastroTipoVeiculo_Load(object sender, EventArgs e)
         {
             carregaGrid();
+            txtResultado.Visible = true;
+            txtResultado.Text = "Registros encontrados: "+tipoVeiculoDataGridView.RowCount;
         }
 
         private void carregaGrid() 

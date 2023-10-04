@@ -39,9 +39,11 @@
             this.editarVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarListaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.VeiculoDataGridView = new System.Windows.Forms.DataGridView();
-            this.txtResultado = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.txtResultado = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VeiculoDataGridView)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -138,15 +140,22 @@
             this.VeiculoDataGridView.Size = new System.Drawing.Size(775, 380);
             this.VeiculoDataGridView.TabIndex = 1;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.txtResultado});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 24);
+            this.statusStrip1.TabIndex = 68;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // txtResultado
             // 
-            this.txtResultado.AutoSize = true;
-            this.txtResultado.Location = new System.Drawing.Point(12, 428);
+            this.txtResultado.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtResultado.Name = "txtResultado";
-            this.txtResultado.Size = new System.Drawing.Size(71, 13);
-            this.txtResultado.TabIndex = 67;
-            this.txtResultado.Text = "Resultado sql";
-            this.txtResultado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtResultado.Size = new System.Drawing.Size(139, 19);
+            this.txtResultado.Text = "toolStripStatusLabel1";
             this.txtResultado.Visible = false;
             // 
             // cadastroVeiculos
@@ -154,7 +163,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtResultado);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.VeiculoDataGridView);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -165,6 +174,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VeiculoDataGridView)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,6 +189,7 @@
         private System.Windows.Forms.ToolStripMenuItem editarVeiculoToolStripMenuItem;
         private System.Windows.Forms.DataGridView VeiculoDataGridView;
         private System.Windows.Forms.ToolStripMenuItem atualizarListaToolStripMenuItem;
-        private System.Windows.Forms.Label txtResultado;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel txtResultado;
     }
 }
