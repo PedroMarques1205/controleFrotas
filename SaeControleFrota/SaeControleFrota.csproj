@@ -75,6 +75,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Report\Model\Class1.cs" />
     <Compile Include="Report\Model\DadosRelatorio.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Views\Lancamentos\cadastrarLancamento.cs">
@@ -163,7 +164,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="assinatura.rdlc" />
+    <EmbeddedResource Include="Report\gastos.rdlc" />
     <EmbeddedResource Include="Report\RelatorioMensal.rdlc" />
+    <EmbeddedResource Include="Report\subReport.rdlc" />
     <EmbeddedResource Include="Views\Lancamentos\cadastrarLancamento.resx">
       <DependentUpon>cadastrarLancamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +230,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="SaeControleFrota.DAO.LancamentoDiario.datasource" />
+    <None Include="SaeControleFrota.DAO.Veiculo.datasource" />
+    <None Include="SaeControleFrota.Report.Model.Class1.datasource" />
     <None Include="SaeControleFrota.Report.Model.DadosRelatorio.datasource" />
   </ItemGroup>
   <ItemGroup>

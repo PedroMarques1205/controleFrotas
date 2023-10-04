@@ -16,5 +16,6 @@ namespace SaeControleFrota.Report.Model
         public string Mororista { get; set; }
         public string TipoDeAtividade { get; set; }
         public double ValorToal { get; set; }
+        public DateTime Data { get; set; }
     }
 }
